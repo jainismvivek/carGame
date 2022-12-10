@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>car Game</title>
-<link rel="stylesheet" href="style.css">
-<script defer src="./script.js"></script>
-</head>
-<body>
-
-    <div class="score"></div>
-    <div class="game">
-        <div class="gameArea"></div>
-        <div class="startScreen">press here to start <br>if u hit anither car u will loose</div>
+    <!-- Custom CSS Styles -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Custom JS Link -->
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <!-- Game Starter Modal  -->
+    <div class="starter-modal-outer" data-outermodal="true">
+      <div class="starter-modal-inner">
+        <h2>Welcome to the Budget friendly <span>Formula Race</span></h2>
+        <p>Simple rule <span>Drive until you loose😜</span></p>
+        <p>
+          Click the below button to start to press enter key to start the game.
+        </p>
+        <button class="btn start-button">Start</button>
+      </div>
     </div>
-</body>
+    <!-- Game Area -->
+    <div class="game">
+      <!-- Scoreboard -->
+      <div class="score-board">
+        <!-- Current score -->
+        <div class="current-score">
+          <h3>Your Score:</h3>
+          <span></span>
+        </div>
+        <!-- Top scores -->
+        <div class="top-scores">
+          <h3>Max Scores</h3>
+        </div>
+      </div>
+      <div class="gameArea"></div>
+    </div>
+    <!-- Game over Modal -->
+    <div id="game-over-modal-outer">
+      <div id="game-over-modal-inner">
+        <h2>Game Over☹️</h2>
+        <span></span>
+        <div class="input-div">
+          <input type="text" id="inp">
+        </div>
+        <button class="btn play-again-button">Play again</button>
+      </div>
+    </div>
+  </body>
 </html>
