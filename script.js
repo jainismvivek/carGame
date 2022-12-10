@@ -147,7 +147,6 @@ function endGame() {
 function start() {
   fetchScoresFromLocalStorage();
   displayTopScores();
-  // startScreen.classList.add("hide");
   gameArea.innerHTML = "";
   player.start = true;
   player.score = 0;
@@ -159,27 +158,26 @@ function start() {
     gameArea.appendChild(div);
   }
   window.requestAnimationFrame(playGame);
-  let car = document.createElement("div");
-  const playerCarDiv = document.createElement("div");
-  playerCarDiv.className = "playerCarOuter";
-  const playerCarImg = document.createElement("img");
+  const car = createElementWithClass("div", ["car"]);
+  const playerCarDiv = createElementWithClass("div", ["playerCarOuter"]);
+  const playerCarImg = createElementWithClass("img");
   playerCarImg.setAttribute("src", "./assets/player.png");
   playerCarDiv.appendChild(playerCarImg);
   car.appendChild(playerCarDiv);
-  car.setAttribute("class", "car");
   gameArea.appendChild(car);
   player.x = car.offsetLeft;
   player.y = car.offsetTop;
   player.start = true;
   for (let x = 0; x < 3; x++) {
-    let enemy = document.createElement("div");
-    const enemyCarDiv = document.createElement("div");
-    enemyCarDiv.classList.add("enemyCarDiv", `enemyCar${x + 1}`);
-    const enemyCarImg = document.createElement("img");
+    let enemy = createElementWithClass("div", ["enemy"]);
+    const enemyCarDiv = createElementWithClass("div", [
+      "enemyCarDiv",
+      `enemyCar${x + 1}`,
+    ]);
+    const enemyCarImg = createElementWithClass("img");
     enemyCarImg.setAttribute("src", `./assets/enemyCar${x + 1}.png`);
     enemyCarDiv.appendChild(enemyCarImg);
     enemy.appendChild(enemyCarDiv);
-    enemy.classList.add("enemy");
     //enemy.y = Math.floor(Math.random()*500)*-1
     enemy.y = (x + 1) * 600 * -1;
     enemy.style.top = enemy.y + "px";
@@ -192,10 +190,10 @@ function displayTopScores() {
   const prev_score_wrapper = document.querySelector(".scores-wrapper");
   if (prev_score_wrapper) prev_score_wrapper.remove();
 
-  const scores_wrapper = createElementWithClass("div", "scores-wrapper");
+  const scores_wrapper = createElementWithClass("div", ["scores-wrapper"]);
   scoreList.sort((a, b) => b.score - a.score);
   scoreList.map((list) => {
-    const playerDiv = createElementWithClass("div", "playerDiv");
+    const playerDiv = createElementWithClass("div", ["playerDiv"]);
     // Create Player Name
     const playerName = createElementWithClass("h5");
     playerName.textContent = list.player;
@@ -213,6 +211,6 @@ function displayTopScores() {
 
 function createElementWithClass(ele, clsName) {
   const element = document.createElement(ele);
-  if (clsName) element.classList.add(clsName);
+  if (clsName) element.classList.add(...clsName);
   return element;
 }
