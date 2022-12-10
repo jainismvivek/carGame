@@ -27,11 +27,17 @@ document.addEventListener("keyup", handleKeyUp);
 // ! Initial declarations
 game_over_modal_outer.classList.add("hidden");
 
+function removeGameOverModal() {
+  if (!game_over_modal_outer.classList.contains("hidden")) return true;
+  return false;
+}
+
 function handlePlayAgain() {
   const playerName = document.querySelector("#playerName");
   if (!game_over_modal_outer.classList.contains("hidden"))
     game_over_modal_outer.classList.add("hidden");
   else game_over_modal_outer.classList.remove("hidden");
+  console.log(playerName.value);
   if (playerName.value === "") return start();
   const scoreObj = {
     player: playerName.value,
@@ -55,7 +61,7 @@ function fetchScoresFromLocalStorage() {
 
 function handleGameStart() {
   outer_modal.dataset.outermodal = false;
-  return start();
+  if (!removeGameOverModal()) return start();
 }
 
 function moveLines() {
@@ -89,7 +95,7 @@ function moveEnemy(car) {
 
     if (item.y > 1500) {
       item.y = -600;
-      item.style.left = Math.floor(Math.random() * 150) + "px";
+      item.style.left = Math.floor(Math.random() * (390 - 5) + 5) + "px";
     }
     item.y += player.speed;
     item.style.top = item.y + "px";
@@ -168,7 +174,7 @@ function start() {
   player.x = car.offsetLeft;
   player.y = car.offsetTop;
   player.start = true;
-  for (let x = 0; x < 3; x++) {
+  for (let x = 0; x < 5; x++) {
     let enemy = createElementWithClass("div", ["enemy"]);
     const enemyCarDiv = createElementWithClass("div", [
       "enemyCarDiv",
@@ -181,7 +187,7 @@ function start() {
     //enemy.y = Math.floor(Math.random()*500)*-1
     enemy.y = (x + 1) * 600 * -1;
     enemy.style.top = enemy.y + "px";
-    enemy.style.left = Math.floor(Math.random() * 150) + "px";
+    enemy.style.left = Math.floor(Math.random() * (390 - 5) + 5) + "px";
     gameArea.appendChild(enemy);
   }
 }

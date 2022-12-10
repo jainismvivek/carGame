@@ -142,14 +142,13 @@ body {
   overflow-y: auto;
   height: 100%;
   scrollbar-width: 6px;
-
 }
-.scores-wrapper::-webkit-scrollbar{
-    width: 6px;
-    background: transparent;
+.scores-wrapper::-webkit-scrollbar {
+  width: 6px;
+  background: transparent;
 }
-.scores-wrapper::-webkit-scrollbar-thumb{
-    background: hsl(0 100% 100% / .66);
+.scores-wrapper::-webkit-scrollbar-thumb {
+  background: hsl(0 100% 100% / 0.66);
 }
 
 .playerDiv {
@@ -244,9 +243,12 @@ body {
 .enemyCar1 {
   transform: scale(1.15);
 }
-.enemyCar2 {
+.enemyCar2,
+.enemyCar4,
+.enemyCar5 {
   transform: scale(1.2);
 }
+
 .enemyCarDiv img {
   height: 100%;
   width: 100%;
