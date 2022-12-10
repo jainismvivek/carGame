@@ -13,6 +13,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 9px;
+  align-items: center;
+  justify-content: center;
 }
 
 /* !Starter Modal */
@@ -103,6 +105,7 @@ body {
   flex-direction: column;
   padding: 8px;
   gap: 1rem;
+  overflow: hidden;
 }
 .current-score {
   background: linear-gradient(145deg, #3eadcf, #abe9cd);
@@ -125,11 +128,46 @@ body {
   border-radius: 6px;
   padding: 2rem;
   background: linear-gradient(98deg, #6e45e1, #89d4cf);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 .top-scores h3 {
   font-size: 1.4em;
   text-align: center;
+  margin-bottom: 1.5rem;
 }
+
+.scores-wrapper {
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: 6px;
+
+}
+.scores-wrapper::-webkit-scrollbar{
+    width: 6px;
+    background: transparent;
+}
+.scores-wrapper::-webkit-scrollbar-thumb{
+    background: hsl(0 100% 100% / .66);
+}
+
+.playerDiv {
+  display: flex;
+  padding: 6px;
+  margin-bottom: 0.35rem;
+}
+.playerDiv h5 {
+  flex: 1 1 60%;
+  font: 500 1.1em sans-serif;
+  color: white;
+  text-transform: capitalize;
+}
+.playerDiv span {
+  flex: 1 1 40%;
+  color: #efefefca;
+}
+
 /* Score board ends */
 /* Game Area ends */
 
